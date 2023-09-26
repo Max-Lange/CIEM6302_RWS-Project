@@ -34,7 +34,7 @@ def filter_out(df, gdf):
                                  crs = global_crs)
 
     # 1.3 Create a buffer of 500 meters to each side of each linestring in the mapped roads
-    gdf2['geometry'] = gdf2['geometry'].buffer(1000)
+    gdf2['geometry'] = gdf2['geometry'].buffer(50)
    
     # 1.4 Convert to EPSG:4326
     gdf2.to_crs(global_crs, inplace= True)
