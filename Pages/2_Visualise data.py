@@ -173,15 +173,26 @@ sorted_locations_df_accidents = locations_df_accidents.sort_values(by='Amount of
 st.dataframe(sorted_locations_df_accidents, use_container_width=True)
 
 st.subheader("Duration of incidents")
+st.write("The duration of the different types of incidents can be seen below. Chose the incident type and press on generate. ")
 
-@st.cache_data(experimental_allow_widgets=True, persist="disk") 
-# Function to display the distribution of incident duration
-def distribution_duration(df_incident):
-    # Convert Start_Time and End_Time columns to datetime type
+selected_accident_type = st.selectbox('Select type of incident:', ['vehicle_obstruction', 'general_obstruction','accident', 'all'])
+
+def plot_distribution(selected_accident_type):
+    if selected_accident_type == 'vehicle_obstruction':
+        distribution_duration(df_incident, selected_accident_type)
+    elif selected_accident_type == 'general_obstruction':
+        distribution_duration(df_incident, selected_accident_type)
+    elif selected_accident_type == 'accident':
+        distribution_duration(df_incident, selected_accident_type)
+    elif selected_accident_type == 'all':
+        distribution_duration(df_incident, selected_accident_type)
+
+
+
+def distribution_duration(df_incident, selected_accident_type):
     df_incident['starttime_new'] = pd.to_datetime(df_incident['starttime_new'])
     df_incident['endtime_new'] = pd.to_datetime(df_incident['endtime_new'])
 
-    # Calculate duration (minutes)
     df_incident['Duration_Minutes'] = (df_incident['endtime_new'] - df_incident['starttime_new']).dt.total_seconds() / 60
     df_incident = df_incident[(df_incident['Duration_Minutes'] <= 500) & (df_incident['Duration_Minutes'] > 0)]
 
@@ -198,15 +209,14 @@ def distribution_duration(df_incident):
         ax.set_ylabel('Number of Incidents')
         st.pyplot(fig)
 
-    # Get all different incident types, including "all incidents"
     accident_types = ['all'] + list(df_incident['type'].unique())
 
-    # Create a dropdown menu
-    accident_type = st.selectbox('Select the incident type (duration):', accident_types)
-    plot_duration_distribution(accident_type)
+    #dropdown = widgets.Dropdown(options=accident_types, description='Incident Type:')
+    #selected_accident_type = st.selectbox('Select the incident type:', accident_types)
 
-# Display the distribution of incident duration
-distribution_duration(df_incident)
+    if st.button('Generate Plot'):
+        plot_duration_distribution(selected_accident_type)
 
+plot_distribution(selected_accident_type)
 
 
