@@ -24,10 +24,10 @@ st.write("First, the data is filtered. Subsequently, the results can be plotted,
 # Load the shapefile and CSV data with caching
 @st.cache_data(experimental_allow_widgets=True, persist="disk")  # Cache this function for faster data retrieval
 def load_data():
-    highway_shapefile = 'Shapefiles/Snelheid_Wegvakken.shp'
+    highway_shapefile = './Data/Shapefiles/Snelheid_Wegvakken.shp'
     network_temp = gpd.read_file(highway_shapefile)
 
-    path = 'incidents19Q3Q4.csv'
+    path = './Data/incidents19Q3Q4.csv'
     df_incident = pd.read_csv(path)
     df_incident['starttime_new'] = pd.to_datetime(df_incident['starttime_new'])
     df_incident['endtime_new'] = pd.to_datetime(df_incident['endtime_new'])
