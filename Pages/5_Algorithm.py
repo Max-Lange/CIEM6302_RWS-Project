@@ -46,10 +46,10 @@ st.info("Use the button in the upper right corner of the figure to view the flow
 st.graphviz_chart(graph)
 
 # Load the PNG images
-image1 = Image.open('nodes.png')
-image2 = Image.open('v1.png')
-image3 = Image.open('v2.png')
-image4 = Image.open('output.png')
+image1 = Image.open('./Images/nodes.png')
+image2 = Image.open('./Images/v1.png')
+image3 = Image.open('./Images/v2.png')
+image4 = Image.open('./Images/output.png')
 
 # Add a title or text above the images
 st.subheader("****All nodes in the network****")
@@ -63,8 +63,8 @@ st.image(image1, caption='Nodes in the network', use_column_width=True)
 st.title("Results")
 
 
-image1_path = "v1.png"
-image2_path = "v2.png"
+image1_path = "./Images/v1.png"
+image2_path = "./Images/v2.png"
 
 # 
 col1, col2 = st.columns(2)

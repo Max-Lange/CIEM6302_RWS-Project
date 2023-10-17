@@ -21,7 +21,7 @@ st.subheader("Introduction")
 st.write(additional_info)
 
 
-st.image("accident.png", caption="Accident on a highway (Stuff, 2022)", use_column_width=True)
+st.image("./Images/accident.png", caption="Accident on a highway (Stuff, 2022)", use_column_width=True)
 
 
 

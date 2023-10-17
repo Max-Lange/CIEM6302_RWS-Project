@@ -39,10 +39,10 @@ st.write("8. Where should these road inspectors be strategically located to achi
 st.write('<div style="display: flex; flex-direction: row;">', unsafe_allow_html=True)
 
 # First image on the left
-st.image('tud.png', use_column_width=False, width=150, caption='Written by students of TU Delft')
+st.image('./Images/tud.png', use_column_width=False, width=150, caption='Written by students of TU Delft')
 
 # Second image on the right
-st.image('rws.jpg', use_column_width=False, width=150, caption='Client: Rijkswaterstaat')
+st.image('./Images/rws.jpg', use_column_width=False, width=150, caption='Client: Rijkswaterstaat')
 
 # Close the container div
 st.write('</div>', unsafe_allow_html=True)
