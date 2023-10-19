@@ -15,10 +15,27 @@ from folium.plugins import MarkerCluster
 from streamlit_folium import folium_static
 import seaborn as sns
 from shapely.geometry import Point
+import plotly.express as px
+
 
 # Streamlit app title
 st.title('Data Story with Streamlit')
 st.info("Please note: Running the code and applying widgets can take some time.")
+
+def main():
+    st.title("Data Preprocessing")
+
+    st.write("After an initial exploration of the data, it was clear that some preprocessing and filtering was necessary. For doing so, the following criteria were considered:")
+    
+    st.markdown("1. Incidents that occurred in roads not included in the NWD Road Network Data.")
+    st.markdown("2. Incidents that had a duration of zero (0) minutes or lasted longer than one day.")
+    
+    st.write("After applying these procedures, a total of 13,172 incidents were removed.")
+
+if __name__ == "__main__":
+    main()
+
+st.title("Incident information")
 st.write("First, the data is filtered. Subsequently, the results can be plotted, providing valuable information for distributing inspectors.")
 
 # Load the shapefile and CSV data with caching
@@ -173,7 +190,7 @@ sorted_locations_df_accidents = locations_df_accidents.sort_values(by='Amount of
 st.dataframe(sorted_locations_df_accidents, use_container_width=True)
 
 st.subheader("Duration of incidents")
-st.write("The duration of the different types of incidents can be seen below. Chose the incident type and press on generate. ")
+st.write("The duration of the different types of incidents can be seen below. Chose the incident type and click on generate plot. ")
 
 selected_accident_type = st.selectbox('Select type of incident:', ['vehicle_obstruction', 'general_obstruction','accident', 'all'])
 
@@ -219,4 +236,28 @@ def distribution_duration(df_incident, selected_accident_type):
 
 plot_distribution(selected_accident_type)
 
+
+#PIE CHART
+
+data = {
+    'Incident Type': ['Vehicle Obstruction', 'General Obstruction', 'Accident'],
+    'Percentage': [80.9, 6.1, 13.0]
+}
+
+# Maak een DataFrame
+df = pd.DataFrame(data)
+
+def main():
+    st.title("Visualization of Incident Types")
+
+    # Tabel met gegevens
+    st.dataframe(df)
+
+    # Taartdiagram met Plotly
+    st.write("Pie Chart of Incident Types:")
+    fig = px.pie(df, names='Incident Type', values='Percentage')
+    st.plotly_chart(fig)
+
+if __name__ == "__main__":
+    main()
 
