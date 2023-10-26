@@ -24,3 +24,25 @@ if incident_types_checkbox:
 
 if incident_characteristics_checkbox:
     st.write("Nice to have: Location based on incident characteristics")
+
+
+
+
+# Result section
+st.header("Result:")
+st.write("Automatic inspector placement based on accident probabilities")
+
+# Future Steps section
+st.header("Future Steps:")
+st.markdown("• Qualitative Testing\n"
+            "• Remove network flaws\n"
+            "• Simulate to predict Performance", unsafe_allow_html=True)
+
+
+
+# Load the images with captions
+cover_image = st.image("cover.png", use_column_width=True, caption="100 Inspectors coverage map")
+travel_image = st.image("traveld.png", use_column_width=True, caption="Distance distribution for 100 road inspectors")
+
+# Display the images side by side
+st.image([cover_image, travel_image], use_container_width=True)
