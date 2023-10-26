@@ -5,6 +5,7 @@ import graphviz
 
 
 st.title("Algorithm")
+st.info("Please note: Running the code and applying widgets can take some time.")
 
 st.title("The Algorithm: Marching Leaf Nodes")
 
@@ -13,7 +14,7 @@ st.title("The Algorithm: Marching Leaf Nodes")
 graph = graphviz.Digraph()
 #st.info("Use the button in the upper right corner of the figure to view full screen")
 st.subheader("Algorithm explanation")
-st.write("With this placement loop, we can go through the entire network. Once a inspector placement has been made, the nodes which that inspector covers are removed from the main network. This way once a new inspector placement is made it cannot consider already covered nodes. It also means that leaf nodes are constantly created, as removing nodes and edges from the network in this way always creates new leafes. Once going through all the existing leaf-nodes, we repeat the loop again with the newly created leaf nodes, and repeat this cycle until the entire network is covered!")
+st.write("The algorithm consists of a placement loop, which goes through the entire network. Once a inspector placement has been made, the nodes which that inspector covers are removed from the main network. This way once a new inspector placement is made it cannot consider already covered nodes. It also means that leaf nodes are constantly created, as removing nodes and edges from the network in this way always creates new leafes. Once going through all the existing leaf-nodes, we repeat the loop again with the newly created leaf nodes, and repeat this cycle until the entire network is covered!")
 st.write("At the step finish placement in the flowchart an inspector has been placed.")
 
 # Add nodes and edges
@@ -42,7 +43,7 @@ graph.edge('Network is not at max capacity, so add more nodes', "Look at all pos
 
 # Add graph to st
 
-st.info("Use the button in the upper right corner of the figure to view the flowchart in full screen")
+st.info("The flowchart helps you better understand the algorithm's logic. Use the button in the upper right corner of the figure to view the flowchart in full screen")
 st.graphviz_chart(graph)
 
 # Load the PNG images
@@ -135,10 +136,10 @@ st.image("travelt.png", caption="Travel Time vs. Inspector Count", use_column_wi
 
 # Load the shapefile and CSV data with caching
 def load_data():
-    highway_shapefile = 'Shapefiles/Snelheid_Wegvakken.shp'
+    highway_shapefile = 'Data/Shapefiles/Snelheid_Wegvakken.shp'
     network_temp = gpd.read_file(highway_shapefile)
 
-    path = 'incidents19Q3Q4.csv'
+    path = 'Data/incidents19Q3Q4.csv'
     df_incident = pd.read_csv(path)
     df_incident['starttime_new'] = pd.to_datetime(df_incident['starttime_new'])
     df_incident['endtime_new'] = pd.to_datetime(df_incident['endtime_new'])

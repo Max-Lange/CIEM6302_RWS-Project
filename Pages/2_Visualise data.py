@@ -28,7 +28,7 @@ def main():
     st.write("After an initial exploration of the data, it was clear that some preprocessing and filtering was necessary. For doing so, the following criteria were considered:")
     
     st.markdown("1. Incidents that occurred in roads not included in the NWD Road Network Data.")
-    st.markdown("2. Incidents that had a duration of zero (0) minutes or lasted longer than one day.")
+    st.markdown("2. Incidents that had a duration of zero minutes or lasted longer than one day.")
     
     st.write("After applying these procedures, a total of 13,172 incidents were removed.")
 
@@ -167,19 +167,26 @@ locations_df_accidents = pd.DataFrame(data=data_locations_df_accidents)
 # Display a bar chart of accidents on highways
 st.subheader('Location of Accidents')
 
-st.write("You can see on which roads the most accidents occur in the figure below.")
+st.write("You can see on which roads the most accidents occur (during Q3&Q4 of 2019) in the figure below.")
 
 # Create a Matplotlib figure and axis
-fig, ax = plt.subplots(figsize=(18, 6))
-ax.bar(locations_df_accidents['Highway'], locations_df_accidents['Amount of Accidents'])
-ax.set_xticklabels(locations_df_accidents['Highway'], rotation=45)
-ax.set_title('Location of Accidents')
-ax.set_ylabel('Amount of Accidents')
-ax.set_xlabel('Highways')
 
-# Show the Matplotlib figure using st.pyplot()
+import plotly.figure_factory as ff
 
-st.pyplot(fig)
+
+
+# Create a Plotly bar chart
+fig = px.bar(
+    locations_df_accidents,
+    x=locations_df_accidents['Highway'],
+    y= locations_df_accidents['Amount of Accidents'],
+    title='Location of Accidents',
+    labels={'Amount of Accidents': 'Amount of Accidents', 'Highway': 'Highways'}
+)
+
+st.plotly_chart(fig, use_container_width=True)
+
+
 
 # Display the data table
 st.subheader('Accident Data by Highway descending')
@@ -244,16 +251,16 @@ data = {
     'Percentage': [80.9, 6.1, 13.0]
 }
 
-# Maak een DataFrame
+
 df = pd.DataFrame(data)
 
 def main():
-    st.title("Visualization of Incident Types")
+    st.subheader("Relative incident type distribution")
 
-    # Tabel met gegevens
+    # Table
     st.dataframe(df)
 
-    # Taartdiagram met Plotly
+    # Piechart Plotly
     st.write("Pie Chart of Incident Types:")
     fig = px.pie(df, names='Incident Type', values='Percentage')
     st.plotly_chart(fig)

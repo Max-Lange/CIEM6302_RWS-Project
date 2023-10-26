@@ -37,7 +37,7 @@ df_incident, network_temp = load_data()
 
 # Streamlit app title
 
-st.write("# Clustering Incidents")
+st.subheader("Clustering Incidents")
 
 # Read the HTML file and cache the result
 @st.cache_data(experimental_allow_widgets=True, persist="disk")
@@ -69,7 +69,11 @@ st.write('The simple density heatmap shows the density of traffic accidents.')
 st.info("The results clearly show three high-incidents areas, the largest of which is the Hague-Rotterdam area, followed by the Amsterdam area and finally the Utrecht area. All three areas show a distinct red color. Then there are three yellow zones, Breda, Eindhoven and Arnhem.")
 heatmap_simple(df_incident, network_temp)
 
+st.subheader("Kernel density estimation.")
+st.write("The kernel density estimation helps us to convert discrete incident data points into incident probability densities on the map.")
 
+
+st.image("pmap.png", caption="100 Inspectors coverage map")
 
 
 

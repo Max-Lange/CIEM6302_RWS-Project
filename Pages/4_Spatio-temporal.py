@@ -7,6 +7,7 @@ from shapely.geometry import Point
 
 # Streamlit app title
 st.title('Spatio-Temporal Visualization of Incidents')
+st.info("Please note: Running the code and applying widgets can take some time.")
 st.write("The purpose of this page is mainly to analyze the spatiotemporal distribution of various types of incidents. It can visualize the specific location and type of incidents in the road network that occurred in each time window.")
 
 # Load the shapefile and CSV data

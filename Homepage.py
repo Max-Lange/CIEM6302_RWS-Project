@@ -5,8 +5,7 @@ st.markdown("# Home Page 🏠")
 st.sidebar.markdown("# Home Page 🏠")
 
 # Textual Information
-st.header("Welcome to the Home Page")
-st.write("This is the homepage of our application.")
+st.write("Welcome to the homepage of the RWS Group 1 application. The group is composed of the students: Yiman Bao, Wail Abdellaoui, Tijmen Hoedjes, Max Lange, and Juan Camargo Fonseca.")
 st.write("You can explore data visualizations of our project within this application.")
 
 # Additional Information as a single paragraph
