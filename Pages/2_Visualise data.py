@@ -55,7 +55,7 @@ def load_data():
 df_incident = load_data()
 
 # Widget for distributiontype
-selected_distribution = st.selectbox('Select time distribution:', ['Hourly', 'Daily', 'Monthly'])
+selected_distribution = st.selectbox('Select time distribution:', ['Hourly', 'Weekly', 'Monthly'])
 
 # Widget for type accident
 selected_accident_type = st.selectbox('Select type of incident:', df_incident['type'].unique())
