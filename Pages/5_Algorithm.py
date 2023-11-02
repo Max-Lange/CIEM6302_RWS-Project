@@ -1,22 +1,44 @@
 import streamlit as st
 from PIL import Image
-import streamlit as st
 import graphviz
+import geopandas as gpd
+import matplotlib.pyplot as plt
+from datetime import datetime
+import data_filtering
+import folium
+from folium.plugins import HeatMap
+import json
+import pandas as pd
+from shapely.geometry import Point
+from folium.plugins import MarkerCluster
+from streamlit_folium import folium_static
+import seaborn as sns
+from scipy.spatial import Voronoi, voronoi_plot_2d
+import numpy as np
+import networkx as nx
+from matplotlib import pyplot as plt
+from shapely import Point, LineString, Polygon
+import node_probability
+from projection_conversions import DutchRDtoWGS84, WGS84toDutchRD
 
 
 st.title("Algorithm")
-st.info("Please note: Running the code and applying widgets can take some time.")
 
-st.title("The Algorithm: Marching Leaf Nodes")
+st.subheader("Algorithm methodology")
 
+st.subheader("Inspector Placement Steps")
+
+# Step 1: Place inspectors at all exits
+st.write("1. Place inspectors at all exits")
+# Step 2: Look at the inspector with the lowest probability sum and combine it
+st.write("2. Look at the inspector with the lowest probability sum, combine it with its closest neighboring inspector")
+# Step 3: Repeat step 2 until desired number of inspectors is reached
+st.write("3. Repeat step 2 until the desired number of inspectors is reached")
+# tep 4: Determine best exit for each inspector
+st.write("4. Determine the best exit within the list of assigned exits to place each inspector")
 
 # Create a graphlib graph object
 graph = graphviz.Digraph()
-#st.info("Use the button in the upper right corner of the figure to view full screen")
-st.subheader("Algorithm explanation")
-st.write("The algorithm consists of a placement loop, which goes through the entire network. Once a inspector placement has been made, the nodes which that inspector covers are removed from the main network. This way once a new inspector placement is made it cannot consider already covered nodes. It also means that leaf nodes are constantly created, as removing nodes and edges from the network in this way always creates new leafes. Once going through all the existing leaf-nodes, we repeat the loop again with the newly created leaf nodes, and repeat this cycle until the entire network is covered!")
-st.write("At the step finish placement in the flowchart an inspector has been placed.")
-
 # Add nodes and edges
 graph.node('start at leafnode', shape='ellipse', style='filled', fillcolor='green', label='Start at Leaf Node')
 graph.node('Look at all possible neighbours of the inspector network, select the nearest one', shape='ellipse', label='Look at all possible neighbours of the inspector network, select the nearest one')
@@ -98,30 +120,8 @@ st.subheader("Add more info about this (latest result)....")
 st.image(image4, caption='Image output', use_column_width=True)
 
 
-
-import streamlit as st
-import geopandas as gpd
-import matplotlib.pyplot as plt
-from datetime import datetime
-import data_filtering
-import folium
-from folium.plugins import HeatMap
-import json
-import pandas as pd
-from shapely.geometry import Point
-from folium.plugins import MarkerCluster
-from streamlit_folium import folium_static
-import seaborn as sns
-from scipy.spatial import Voronoi, voronoi_plot_2d
-import numpy as np
-import networkx as nx
-from matplotlib import pyplot as plt
-from shapely import Point, LineString, Polygon
-import node_probability
-from projection_conversions import DutchRDtoWGS84, WGS84toDutchRD
-
 # Streamlit app title
-st.title('Running algorithm v1')
+st.subheader('Running algorithm')
 st.info("Please note: Running the code and applying widgets can take some time.")
 
 # Add a description of the image and its purpose
