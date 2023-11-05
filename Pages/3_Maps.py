@@ -27,6 +27,7 @@ st.sidebar.markdown("# Visualising results using maps")
 def load_data():
     highway_shapefile = './Data/Shapefiles/Snelheid_Wegvakken.shp'
     network_temp = gpd.read_file(highway_shapefile)
+    NL_map = gpd.read_file('Netherlands SHP/NL_Province/NLProvince.SHP')
 
     path = './Data/incidents19Q3Q4.csv'
     df_incident = pd.read_csv(path)
@@ -34,9 +35,9 @@ def load_data():
     df_incident['endtime_new'] = pd.to_datetime(df_incident['endtime_new'])
     # Filter the data
     df_incident = data_filtering.filter_out(df_incident, network_temp)
-    return df_incident, network_temp
+    return df_incident, network_temp, NL_map
 
-df_incident, network_temp = load_data()
+df_incident, network_temp, NL_map = load_data()
 
 # Streamlit app title
 
@@ -64,6 +65,7 @@ def heatmap_simple(_df, _network_temp):
     plt.xlabel("Longitude")
     plt.ylabel("Latitude")
     _network_temp.plot(ax=ax, color='blue', linewidth=0.5, label='network')
+    NL_map.plot(ax = ax, facecolor = "None")
     st.pyplot(fig)
 
 # Display the simple density heatmap

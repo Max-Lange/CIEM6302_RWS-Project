@@ -15,14 +15,15 @@ st.write("The purpose of this page is mainly to analyze the spatiotemporal distr
 def load_data():
     highway_shapefile = './Data/Shapefiles/Snelheid_Wegvakken.shp'
     network_temp = gpd.read_file(highway_shapefile)
+    NL_map = gpd.read_file('Netherlands SHP/NL_Province/NLProvince.SHP')
 
     path = './Data/incidents19Q3Q4.csv'
     df_incident = pd.read_csv(path)
     df_incident['starttime_new'] = pd.to_datetime(df_incident['starttime_new'])
 
-    return df_incident, network_temp
+    return df_incident, network_temp, NL_map
 
-df_incident, network_temp = load_data()
+df_incident, network_temp, NL_map = load_data()
 
 # Define a Streamlit slider for selecting the time window
 timestep = st.slider('Select Time Window (minutes):', min_value=1, max_value=60, value=15)
@@ -52,6 +53,7 @@ selected_data = df_incident[df_incident['time_window_start'] == selected_time]
 # Create a map
 fig, ax = plt.subplots(figsize=(10, 8))
 network_temp.plot(ax=ax, color='blue', linewidth=0.5, label='Network')
+NL_map.plot(ax = ax, facecolor = "None", edgecolor = "grey")
 
 # Define colors for different accident types
 colors = {'general_obstruction': 'red', 'vehicle_obstruction': 'green', 'accident': 'm'}
