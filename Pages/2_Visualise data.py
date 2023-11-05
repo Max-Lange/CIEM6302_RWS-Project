@@ -19,7 +19,7 @@ import plotly.express as px
 
 
 # Streamlit app title
-st.title('Data Story with Streamlit')
+st.title('Data Story with Streamlit')   
 st.info("Please note: Running the code and applying widgets can take some time.")
 
 def main():
@@ -29,8 +29,9 @@ def main():
     
     st.markdown("1. Incidents that occurred in roads not included in the NWD Road Network Data.")
     st.markdown("2. Incidents that had a duration of zero minutes or lasted longer than one day.")
+    st.markdown("3. Incidents that did not occur in the Netherlands.")
     
-    st.write("After applying these procedures, a total of 13,172 incidents were removed.")
+    st.write("After applying these procedures, a total of 13,977 incidents were removed.")
 
 if __name__ == "__main__":
     main()
