@@ -82,44 +82,6 @@ st.write("These are the nodes in the network. All accidents are allocated to the
 st.image(image1, caption='Nodes in the network', use_column_width=True)
 
 
-# Streamlit-applicatie instellen
-st.title("Results")
-
-
-image1_path = "./Images/v1.png"
-image2_path = "./Images/v2.png"
-
-# 
-col1, col2 = st.columns(2)
-
-# IMAGE 1
-with col1:
-    st.image(image1_path, caption="V1", use_column_width=True)
-    st.write(
-"""
-**V1**
-- Network as is: 253
-- Duration: 1m 10s
-""")
-
-
-# IMAGE2
-with col2:
-    st.image(image2_path, caption="With exit switching", use_column_width=True)
-    st.write(
-"""
-**V2**
-- With exit switching: 139
-- Duration: 3m 40s
-""")
-
-
-# Add a title or text above the images
-st.subheader("Add more info about this (latest result)....")
-# Display with a caption
-st.image(image4, caption='Image output', use_column_width=True)
-
-
 # Streamlit app title
 st.subheader('Running algorithm')
 st.info("Please note: Running the code and applying widgets can take some time.")
