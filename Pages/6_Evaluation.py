@@ -8,7 +8,7 @@ st.write("We mainly used two different methods to validate the results. One is t
 
 
 
-st.subheader("Coveriing Area:")
+st.subheader("Covering Area:")
 st.write("The figure below demonstrates that the vast majority of the country is accessible to inspectors with a travel time of up to 14 minutes.")
 st.write("We calculated the covered length, coverage ratio, redundant length and redundant ratio. These indicators can be used as meaningful reference indicators. And we have succeeded in achieving automatic inspector placement based on accident probabilities.")
 
