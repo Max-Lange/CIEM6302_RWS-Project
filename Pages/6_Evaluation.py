@@ -13,8 +13,7 @@ st.write("The figure below demonstrates that the vast majority of the country is
 st.write("We calculated the covered length, coverage ratio, redundant length and redundant ratio. These indicators can be used as meaningful reference indicators. And we have succeeded in achieving automatic inspector placement based on accident probabilities.")
 
 # Load the cover image with caption
-cover_image = st.image("cover.png", use_column_width=True, caption="100 Inspectors coverage map")
-
+cover_image = st.image("./Images/cover.png", use_column_width=True, caption="100 Inspectors coverage map")
 
 
 st.subheader("Average Distance to Incidents")
@@ -36,7 +35,7 @@ st.image('Images/real_distance_distribution.png', use_column_width=True, caption
 
 st.write("The results on both test sets show that our results can respond quickly to incidents.")
 
-st.markdown("#### Samll Tips")
+st.markdown("#### Small Tips")
 st.write("If you are not satisfied of our current data set, you can use the code in our final notebook to generate the test set randomly or choose real incidents of anytime and any type by data filtering. Our Streamlit is temporarily unable to provide this service because calculating the distance from 1000 incidents to inspectors may take up to 10 minutes.")
 
 # method_checkbox = st.checkbox("Method to identify the locations of road inspectors to reach the hotspots < 18 mins", value=True)
