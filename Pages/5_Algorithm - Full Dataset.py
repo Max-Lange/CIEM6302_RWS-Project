@@ -113,7 +113,7 @@ st.write('"Probability Travel Time" is the sum of an inspector\'s travel time to
 st.write('To analyze the effect of applying a subset of the dataset for a fixed number of inspectors, you can use the widgets below and click on "Generate Plot."')
 
 # Insert the image
-st.image("travelt.png", caption="Travel Time vs. Inspector Count", use_column_width=True)
+st.image("./Images/travelt.png", caption="Travel Time vs. Inspector Count", use_column_width=True)
 
 
 # Load the shapefile and CSV data with caching

@@ -78,7 +78,7 @@ st.subheader("Kernel density estimation.")
 st.write("The kernel density estimation helps us to convert discrete incident data points into incident probability densities on the map.")
 st.info("As can be seen, and corresponding with the findings from previous maps, the segments with the highest incident density are located in the Ranstad Area.")
 
-st.image("pmap.png", caption="Segment Probability Map")
+st.image("./Images/pmap.png", caption="Segment Probability Map")
 
 
 
