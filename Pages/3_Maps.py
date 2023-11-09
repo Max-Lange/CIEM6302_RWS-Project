@@ -25,11 +25,11 @@ st.sidebar.markdown("# Visualising results using maps")
 # Load the shapefile and CSV data with caching
 @st.cache_data(experimental_allow_widgets=True, persist="disk")
 def load_data():
-    highway_shapefile = './Data/Shapefiles/Snelheid_Wegvakken.shp'
+    highway_shapefile = 'Data/Shapefiles/Snelheid_Wegvakken.shp'
     network_temp = gpd.read_file(highway_shapefile)
     NL_map = gpd.read_file('Netherlands SHP/NL_Province/NLProvince.SHP')
 
-    path = './Data/incidents19Q3Q4.csv'
+    path = 'Data/incidents19Q3Q4.csv'
     df_incident = pd.read_csv(path)
     df_incident['starttime_new'] = pd.to_datetime(df_incident['starttime_new'])
     df_incident['endtime_new'] = pd.to_datetime(df_incident['endtime_new'])
@@ -78,7 +78,7 @@ st.subheader("Kernel density estimation.")
 st.write("The kernel density estimation helps us to convert discrete incident data points into incident probability densities on the map.")
 st.info("As can be seen, and corresponding with the findings from previous maps, the segments with the highest incident density are located in the Ranstad Area.")
 
-st.image("pmap.png", caption="Segment Probability Map")
+st.image("./Images/pmap.png", caption="Segment Probability Map")
 
 
 
